@@ -1,0 +1,8 @@
+---
+- hosts: vagrant
+  sudo: true
+  roles:
+    - vagrant/base
+    - vagrant/ntp
+    - vagrant/user-login
+    
