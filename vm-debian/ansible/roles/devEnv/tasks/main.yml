@@ -1,0 +1,11 @@
+---
+# This playbook will set up development tools for plasma physics codes
+
+- name: Install gcc
+  apt: name=gcc state=latest
+  tags: gcc
+  
+- name: Install gfortran
+  apt: name=gfortran state=latest
+  tags: gfortran
+  
