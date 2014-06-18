@@ -1,2 +1,11 @@
 ---
 # This playbook contains base plays that are required by all vm's
+- name: Time - Set timezone (Debian)
+ copy: src=timezone
+    dest=/etc/timezone
+    owner=root
+    group=root
+    mode=0644
+ when: ansible_os_family == "Debian"
+ notify:
+  - update timezone

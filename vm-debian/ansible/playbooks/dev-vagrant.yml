@@ -2,5 +2,5 @@
 - hosts: vagrant
   sudo: true
   roles:
-
+    - devEnv
     
