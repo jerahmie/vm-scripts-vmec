@@ -14,6 +14,6 @@
   lineinfile: dest=/etc/default/grub
              regexp="GRUB_RECORDFAIL_TIMEOUT="
              line="GRUB_RECORDFAIL_TIMEOUT=0"
- notify:
-  - update grub
+  notify:
+   - update grub
   
