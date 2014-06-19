@@ -4,7 +4,7 @@
   sudo: true
   tasks:
    - name: Time - Set timezone (Debian)
-     copy: src=timezone  dest=/etc/timezone owner=root group=root mode=0644
+     copy: src=files/timezone  dest=/etc/timezone owner=root group=root mode=0644
      notify:
       - update timezone
       
