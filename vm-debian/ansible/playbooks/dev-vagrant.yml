@@ -2,7 +2,6 @@
 - hosts: vagrant
   user: vagrant
   sudo: True
-  sudo_user: vagrant
   
   roles:
     - base
