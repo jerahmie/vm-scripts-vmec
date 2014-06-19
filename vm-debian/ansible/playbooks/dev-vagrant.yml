@@ -1,6 +1,9 @@
 ---
 - hosts: vagrant
-  su: yes
+  user: vagrant
+  sudo: True
+  sudo_user: vagrant
+  
   roles:
     - base
     - devEnv
