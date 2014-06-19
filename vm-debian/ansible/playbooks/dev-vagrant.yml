@@ -4,9 +4,7 @@
   sudo: true
   tasks:
    - name: Copy something
-     copy: src=files/timezone  dest=/home/vagrant/timezone owner=root group=root mode=0644
-     notify:
-      - update timezone
+     copy: src=/home/vagrant/test.txt  dest=/home/vagrant/timezone
       
   roles:
     - devEnv
