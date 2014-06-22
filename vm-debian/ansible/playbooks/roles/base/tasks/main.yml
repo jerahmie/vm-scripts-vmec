@@ -19,11 +19,11 @@
               regexp=" set timeout=[^\$]"
               line=" set timeout=0"
 
-- name: Locale - Set LC_ALL (en_US.UFT-8)
+- name: Locale - Set LC_ALL (en_US.UTF-8)
   lineinfile: dest=/etc/default/locale
               create=no
               regexp="LC_ALL="
-              line="LC_ALL="en_US.UTF-8"
+              line='LC_ALL="en_US.UTF-8"'
 
 - name: Locale - Set LANG (en_US.UTF-8)
   lineinfile: dest=/etc/default/locale
