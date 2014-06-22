@@ -608,9 +608,9 @@ def md5s(data):
     return digest.hexdigest()
 
 def md5(filename):
-    ''' Return MD5 hex digest of local file, or None if file is not present. '''
+    ''' Return MD5 hex digest of local file, None if file is not present or a directory. '''
 
-    if not os.path.exists(filename):
+    if not os.path.exists(filename) or os.path.isdir(filename):
         return None
     digest = _md5()
     blocksize = 64 * 1024
@@ -1003,21 +1003,22 @@ def is_list_of_strings(items):
             return False
     return True
 
-def _listify(a):
-    if not isinstance(a, (list, tuple)):
-        return [a,]
-    else:
-        return a
-
 def list_union(a, b):
-    set_a = set(_listify(a))
-    set_b = set(_listify(b))
-    return list(set_a.union(set_b))
+    result = []
+    for x in a:
+        if x not in result:
+            result.append(x)
+    for x in b:
+        if x not in result:
+            result.append(x)
+    return result
 
 def list_intersection(a, b):
-    set_a = set(_listify(a))
-    set_b = set(_listify(b))
-    return list(set_a.intersection(set_b))
+    result = []
+    for x in a:
+        if x in b and x not in result:
+            result.append(x)
+    return result
 
 def safe_eval(expr, locals={}, include_exceptions=False):
     '''

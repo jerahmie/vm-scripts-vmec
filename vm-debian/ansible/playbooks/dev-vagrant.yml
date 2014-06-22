@@ -2,8 +2,10 @@
 - hosts: all
   user: vagrant
   sudo: true
+  tasks:
+   - name: Copy something
+     copy: src=files/timezone  dest=/home/vagrant/timezone
       
   roles:
-    - base
     - devEnv
     

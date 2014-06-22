@@ -129,6 +129,8 @@ def get_distribution():
     if platform.system() == 'Linux':
         try:
             distribution = platform.linux_distribution()[0].capitalize()
+            if " " in distribution:
+                distribution = distribution.split()[0]
             if not distribution and os.path.isfile('/etc/system-release'):
                 distribution = platform.linux_distribution(supported_dists=['system'])[0].capitalize()
                 if 'Amazon' in distribution:
@@ -141,6 +143,18 @@ def get_distribution():
     else:
         distribution = None
     return distribution
+
+def get_distribution_version():
+    ''' return the distribution version '''
+    if platform.system() == 'Linux':
+        try:
+            distribution_version = platform.linux_distribution()[1]
+        except:
+            # FIXME: MethodMissing, I assume?
+            distribution_version = platform.dist()[1]
+    else:
+        distribution_version = None
+    return distribution_version
 
 def load_platform_subclass(cls, *args, **kwargs):
     '''
@@ -1020,7 +1034,18 @@ class AnsibleModule(object):
                 context = self.selinux_default_context(dest)
 
         creating = not os.path.exists(dest)
-        switched_user = os.getlogin() != pwd.getpwuid(os.getuid())[0]
+
+        try:
+            login_name = os.getlogin()
+        except OSError:
+            # not having a tty can cause the above to fail, so
+            # just get the LOGNAME environment variable instead
+            login_name = os.environ.get('LOGNAME', None)
+
+        # if the original login_name doesn't match the currently
+        # logged-in user, or if the SUDO_USER environment variable
+        # is set, then this user has switched their credentials
+        switched_user = login_name and login_name != pwd.getpwuid(os.getuid())[0] or os.environ.get('SUDO_USER')
 
         try:
             # Optimistically try a rename, solves some corner cases and can avoid useless work, throws exception if not atomic.
@@ -1126,6 +1151,7 @@ class AnsibleModule(object):
             # that are not balanced
             # source: http://blog.stevenlevithan.com/archives/match-quoted-string
             r'([-]{0,2}pass[-]?(?:word|wd)?[=\s]?)((?:["\'])?(?:[^\s])*(?:\1)?)',
+            r'^(?P<before>.*:)(?P<password>.*)(?P<after>\@.*)$', 
             # TODO: add more regex checks here
         ]
         for re_str in clean_re_strings:
