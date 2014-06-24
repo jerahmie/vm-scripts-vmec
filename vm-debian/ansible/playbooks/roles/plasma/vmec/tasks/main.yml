@@ -13,4 +13,4 @@
   get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=root mode=0644
 
 - name: Unzip stellinstall
-  - unarchive: src=/home/vagrant/workspace/stellinstall.zip  dest=/home/vagrant/workspace/vmec
+  unarchive: src=/home/vagrant/workspace/stellinstall.zip  dest=/home/vagrant/workspace
