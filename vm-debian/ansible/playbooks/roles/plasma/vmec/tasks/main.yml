@@ -2,12 +2,15 @@
 # download and install vmec
 
 - name: Check if plasma directory exists
-  stat: path=/home/vagrant/workspace
+  stat: path=/home/vagrant/workspace/vmec
   register: check_path
 
 - name: Make directory if doesn't exist
-  action: command mkdir /home/vagrant/workspace
+  action: command mkdir /home/vagrant/workspace/vmec
   when: check_path.stat.exists == false
 
 - name: Download VMEC
   get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=root mode=0644
+
+- name: Unzip stellinstall
+  unarchive: src=/home/vagrant/workspace/stellinstall.zip  dest=/home/vagrant/workspace/vmec
