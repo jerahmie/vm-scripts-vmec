@@ -14,5 +14,5 @@
   register: get_vmec
 
 - name: Unzip stellinstall
-  command: unzip -qo /home/vagrant/workspace/stellinstall.zip
+  command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
   
