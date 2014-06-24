@@ -2,4 +2,4 @@
 # download and install vmec
 
 - name Download VMEC
-  get_url: url=http://radderacoustics.com/~jerahmie/stellinstall.zip dest=/home/vagrant/build
+  get_url: url='http://radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/build
