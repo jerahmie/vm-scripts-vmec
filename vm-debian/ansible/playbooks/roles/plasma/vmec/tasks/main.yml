@@ -9,10 +9,21 @@
   action: command mkdir /home/vagrant/workspace/vmec
   when: check_path.stat.exists == false
 
-- name: Download VMEC
-  get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=root mode=0644
-  register: get_vmec
-
-- name: Unzip stellinstall
-  command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
+- name: create temporary directory
+  command: mktemp -d
+  register: tempdir
+  
+- name: Download md5sum
+  get_url: url='http://www.radderacoustics.com/~jerahmie/md5sum.txt' dest={{ tempdir.stdout }}
+  
+- name: extract md5sum from file
+  lineinfile: dest={{ tempdir.stdout }}/md5sum.txt regexp="^MD5 (stellinstall.zip) = ([0-9a-e].*)" 
+  
+# - name: Download VMEC
+#   get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=root mode=0644
+#   register: get_vmec
+# #  when: new_vmec == true
+# 
+# - name: Unzip stellinstall
+#   command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
   
