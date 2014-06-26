@@ -6,7 +6,7 @@
   register: check_path
 
 - name: Check if stellinstall.zip is present
-  stat: path=/home/vagrant/workspace/vmec/stellinstall.zip
+  stat: path=/home/vagrant/workspace/stellinstall.zip
   register: check_stellinstall
 
 - name: result of check if stellinstall.zip exists
@@ -24,8 +24,8 @@
   get_url: url='http://www.radderacoustics.com/~jerahmie/md5sum.txt' dest={{ tempdir.stdout }}
   
 - name: Compare checksums of stellinstall.zip on server with local
-  command: vmec_checksum.sh /home/vagrant/workspace/vmec/stellinstall.zip {{ tempdir.stdout }}/md5sum.txt
-  when: check_stellinstall == true
+  command: vmec_checksum.sh /home/vagrant/workspace/stellinstall.zip {{ tempdir.stdout }}/md5sum.txt
+  when: check_stellinstall.stat.exists == true
 
   
 # - name: Download VMEC if does not exist
