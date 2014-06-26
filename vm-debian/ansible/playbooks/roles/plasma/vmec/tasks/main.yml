@@ -8,6 +8,8 @@
 - name: Check if stellinstall.zip is present
   stat: path=/home/vagrant/workspace/vmec/stellinstall.zip
   register: check_stellinstall
+
+- name: result of check if stellinstall.zip exists
   debug: var=check_stellinstall
   
 - name: Make directory if doesn't exist
