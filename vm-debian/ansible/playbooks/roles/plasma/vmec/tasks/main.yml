@@ -5,6 +5,10 @@
   stat: path=/home/vagrant/workspace/vmec
   register: check_path
 
+- name: Check if stellinstall.zip is present
+  stat: path=/home/vagrant/workspace/vmec/stellinstall.zip
+  register: check_stellinstall
+  
 - name: Make directory if doesn't exist
   action: command mkdir /home/vagrant/workspace/vmec
   when: check_path.stat.exists == false
@@ -16,11 +20,13 @@
 - name: Download md5sum
   get_url: url='http://www.radderacoustics.com/~jerahmie/md5sum.txt' dest={{ tempdir.stdout }}
   
-- name: extract md5sum from file
-  lineinfile: dest={{ tempdir.stdout }}/md5sum.txt regexp="^MD5 (stellinstall.zip) = ([0-9a-e].*)" 
+- name: Compare checksums of stellinstall.zip on server with local
+  command: vmec_checksum.sh /home/vagrant/workspace/vmec/stellinstall.zip {{ tempdir.stdout }}/md5sum.txt
+  when: check_stellinstall == true
+
   
-# - name: Download VMEC
-#   get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=root mode=0644
+# - name: Download VMEC if does not exist
+#   get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=vagrant mode=0644
 #   register: get_vmec
 # #  when: new_vmec == true
 # 
