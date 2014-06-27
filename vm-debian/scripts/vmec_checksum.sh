@@ -8,10 +8,10 @@ MD5SUM_BINARY=/usr/bin/md5sum
 REGEX_LINUX_MD5SUM='^\([0-9a-f]*\)[ ]*stellinstall.zip$'
 REGEX_MACOSX_MD5SUM='^MD5 (stellinstall.zip) = \([0-9a-f]*\)$'
 
-md5sum_stellinstall_local=$($MD5SUM_BINARY $VMEC_ZIP | sed 's/$REGEX_LINUX_MD5SUM/poop/')
+md5sum_stellinstall_local=$($MD5SUM_BINARY $VMEC_ZIP | sed "s/$REGEX_LINUX_MD5SUM/\1/")
 echo "md5sum_stellinstall_local: $md5sum_stellinstall_local"
 
-md5sum_stellinstall_server=$(cat md5sum.txt | sed 's/$REGEX_MACOSX_MD5SUM/fart/')
+md5sum_stellinstall_server=$(cat md5sum.txt | sed "s/$REGEX_MACOSX_MD5SUM/\1/")
 echo "md5sum_stellinstall_server: $md5sum_stellinstall_server"
 
 if [[ $md5sum_stellinstall_local == $md5sum_stellinstall_server ]]; then
