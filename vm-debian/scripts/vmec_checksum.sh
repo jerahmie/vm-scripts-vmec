@@ -18,14 +18,12 @@ if [[ $md5sum_stellinstall_local == $md5sum_stellinstall_server ]]; then
     echo "MD5 sums were a match"
     echo $md5sum_vmec_zip
     echo $md5sum_stellinstall_server
-    return_val=1
+    exit 1
 else
     echo "MD5 sums were NOT a match"
     echo $md5sum_vmec_zip
     echo $md5sum_stellinstall_server
-    return_val=0
+    exit 0
 fi
-
-return $return_val
 
 
