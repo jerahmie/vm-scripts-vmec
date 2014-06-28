@@ -29,9 +29,9 @@
   register: new_vmec
   
 - name: Download VMEC if does not exist
-   get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=vagrant mode=0644
-   register: get_vmec
-   when: new_vmec == true
+  get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=vagrant mode=0644
+  register: get_vmec
+  when: new_vmec == true
 
  - name: Unzip stellinstall
    command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
