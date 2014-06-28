@@ -36,7 +36,8 @@
   when: check_stellinstall.stat.exists == true
   register: download_vmec
 
-- name: Check status of ne
+- name: Check status of download_vmec
+  debug: download_vmec
   
 - name: Download VMEC if does not exist
   get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=vagrant mode=0644
