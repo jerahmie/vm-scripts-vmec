@@ -2,8 +2,20 @@
 # download and install vmec
 
 - name: Check if plasma directory exists
+  stat: path=/home/vagrant/workspace
+  register: check_workspace_path
+  
+- name: Make workspace directory if doesn't exiust
+  action: command mkdir /home/vagrant/workspace
+  when: check_workspace_path.stat.exists == false
+  
+- name: Check if vmec directory exists
   stat: path=/home/vagrant/workspace/vmec
-  register: check_path
+  register: check_vmec_path
+
+- name: Make directory if doesn't exist
+  action: command mkdir /home/vagrant/workspace/vmec
+  when: check_vmec_path.stat.exists == false
 
 - name: Check if stellinstall.zip is present
   stat: path=/home/vagrant/workspace/stellinstall.zip
@@ -12,10 +24,6 @@
 - name: result of check if stellinstall.zip exists
   debug: var=check_stellinstall
   
-- name: Make directory if doesn't exist
-  action: command mkdir /home/vagrant/workspace/vmec
-  when: check_path.stat.exists == false
-
 - name: create temporary directory
   command: mktemp -d
   register: tempdir
@@ -35,4 +43,4 @@
 
 - name: Unzip stellinstall
   command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
-     
+  
