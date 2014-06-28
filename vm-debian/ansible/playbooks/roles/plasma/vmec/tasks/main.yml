@@ -33,6 +33,6 @@
   register: get_vmec
   when: new_vmec == true
 
- - name: Unzip stellinstall
-   command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
+- name: Unzip stellinstall
+  command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
      
