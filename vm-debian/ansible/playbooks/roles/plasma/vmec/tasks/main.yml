@@ -6,7 +6,7 @@
   register: check_workspace_path
   
 - name: Make workspace directory if doesn't exiust
-  action: command mkdir /home/vagrant/workspace
+  file: path=/home/vagrant/workspace state=directory
   when: check_workspace_path.stat.exists == false
   
 - name: Check if vmec directory exists
@@ -14,7 +14,7 @@
   register: check_vmec_path
 
 - name: Make directory if doesn't exist
-  action: command mkdir /home/vagrant/workspace/vmec
+  file: path=/home/vagrant/workspace/vmec state=directory
   when: check_vmec_path.stat.exists == false
 
 - name: Check if stellinstall.zip is present
