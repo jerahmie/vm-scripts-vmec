@@ -34,12 +34,14 @@
 - name: Compare checksums of stellinstall.zip on server with local
   command: vmec_checksum.sh /home/vagrant/workspace/stellinstall.zip {{ tempdir.stdout }}/md5sum.txt
   when: check_stellinstall.stat.exists == true
-  register: new_vmec
+  register: download_vmec
+
+- name: Check status of ne
   
 - name: Download VMEC if does not exist
   get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=vagrant mode=0644
   register: get_vmec
-  when: new_vmec == true
+  when: download_vmec == true
 
 - name: Unzip stellinstall
   command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
