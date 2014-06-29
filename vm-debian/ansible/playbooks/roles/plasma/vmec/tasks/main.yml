@@ -44,6 +44,10 @@
   register: get_vmec
   when: check_stellinstall.stat.exists == false or download_vmec == true
 
+- name: Check if stellinstall.zip is present
+  stat: path=/home/vagrant/workspace/stellinstall.zip
+  register: check_stellinstall
+
 - name: Unzip stellinstall
   command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
-  when: stellinstall_zip_exists == true
+  when: check_stellinstall.stat.exists == true
