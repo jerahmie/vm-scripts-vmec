@@ -49,5 +49,5 @@
   register: check_stellinstall
 
 - name: Unzip stellinstall
-  command: unzip -qo /home/vagrant/workspace/stellinstall.zip -d /home/vagrant/workspace/vmec
+  unarchive: src=/home/vagrant/workspace/stellinstall.zip dest=/home/vagrant/workspace/vmec owner=vagrant group=vagrant
   when: check_stellinstall.stat.exists == true
