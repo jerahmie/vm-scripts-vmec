@@ -29,3 +29,6 @@
   apt: name=hunspell-en-us state=latest
   tags: editors  
 
+- name: Install atlas
+  apt: name=libatlas-dev state=latest
+  tags: libraries
