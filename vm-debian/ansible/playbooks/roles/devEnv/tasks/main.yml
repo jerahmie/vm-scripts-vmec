@@ -13,4 +13,18 @@
   apt: name=gfortran state=latest
   tags: gfortran
 
+- name: Install gdb
+  apt: name=gdb state=latest
+  tags: gdb
+
+- name: Install emacs
+  apt: name=emacs state=latest
+  tags: editors
+
+- name: Install install emacs dictionary
+  apt: name=hunspell state=latest
+  tags: editors
   
+- name: Install install emacs dictionary
+  apt: name=hunspell-en-us state=latest
+  tags: editors  
