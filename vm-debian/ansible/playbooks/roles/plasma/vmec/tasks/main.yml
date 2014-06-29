@@ -51,3 +51,6 @@
 - name: Unzip stellinstall
   unarchive: src=/home/vagrant/workspace/stellinstall.zip dest=/home/vagrant/workspace/vmec owner=vagrant group=vagrant
   when: check_stellinstall.stat.exists == true
+
+- name: set vmec dir permissions
+  file: /home/vagrant/workspace/vmec state=directory recurse=true owner=vagrant group=vagrant
