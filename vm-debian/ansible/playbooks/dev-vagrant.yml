@@ -6,4 +6,6 @@
   roles:
     - base
     - devEnv
-    - plasma/vmec    
+    - plasma/vmec
+    - plasma/devEnv
+    

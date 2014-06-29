@@ -21,9 +21,6 @@
   stat: path=/home/vagrant/workspace/stellinstall.zip
   register: check_stellinstall
 
-- name: result of check if stellinstall.zip exists
-  debug: var=check_stellinstall
-  
 - name: create temporary directory
   command: mktemp -d
   register: tempdir
@@ -36,9 +33,6 @@
   when: check_stellinstall.stat.exists == true
   register: download_vmec
 
-- name: Check status of download_vmec
-  debug: download_vmec
-  
 - name: Download VMEC if does not exist
   get_url: url='http://www.radderacoustics.com/~jerahmie/stellinstall.zip' dest=/home/vagrant/workspace owner=vagrant group=vagrant mode=0644
   register: get_vmec

@@ -1,0 +1,7 @@
+---
+# Plasma development specific packages
+
+- name: Install netcdf development libraries
+  apt: name=libnetcdf-dev state=latest
+  tags: libraries
+  
