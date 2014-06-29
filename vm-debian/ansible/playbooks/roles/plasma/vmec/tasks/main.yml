@@ -53,4 +53,4 @@
   when: check_stellinstall.stat.exists == true
 
 - name: set vmec dir permissions
-  file: /home/vagrant/workspace/vmec state=directory recurse=yes owner=vagrant group=vagrant
+  file: src=/home/vagrant/workspace/vmec state=directory recurse=yes owner=vagrant group=vagrant
