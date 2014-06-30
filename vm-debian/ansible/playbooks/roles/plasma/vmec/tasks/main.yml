@@ -49,10 +49,9 @@
 - name: Set vmec dir permissions
   file: path=/home/vagrant/workspace/vmec state=directory recurse=yes owner=vagrant group=vagrant
 
-#- name: Save copy of vmec setup file
-#  file: src=/home/vagrant/workspace/vmec/setup dest=/home/vagrant/workspace/vmec/setup.orig
+- name: Save copy of vmec setup file
+  command: mv /home/vagrant/workspace/vmec/setup /home/vagrant/workspace/vmec/setup.orig
   
-
 - name: Download vmec setup file
   get_url: url='http://www.radderacoustics.com/~jerahmie/setup_vmec_vagrant' dest=/home/vagrant/workspace/vmec/setup
   when: check_vmec_path.stat.exists == false
