@@ -53,6 +53,6 @@
   command: mv /home/vagrant/workspace/vmec/setup /home/vagrant/workspace/vmec/setup.orig
   
 - name: Download vmec setup file
-  get_url: url='http://www.radderacoustics.com/~jerahmie/setup_vmec_vagrant' dest=/home/vagrant/workspace/vmec/setup
+  get_url: url='http://www.radderacoustics.com/~jerahmie/setup_vmec_vagrant' dest=/home/vagrant/workspace/vmec/setup owner=vagrant group=vagrant mode=0766
 
   
