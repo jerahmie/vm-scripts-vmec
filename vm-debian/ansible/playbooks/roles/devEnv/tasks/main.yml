@@ -5,6 +5,10 @@
   apt: name=unzip state=latest
   tags: utils
 
+- name: Install make
+  apt: name=make state=latest
+  tags: utils
+  
 - name: Install gcc
   apt: name=gcc state=latest
   tags: gcc
