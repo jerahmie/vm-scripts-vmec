@@ -1,0 +1,19 @@
+---
+# This playbook will set up an X11 environment for X11 forwarding
+
+- name: Install x11-utils
+  apt: name=x11-utils state=latest
+  tags: X11
+
+- name: Install xterm
+  apt: name=xterm state=latest
+  tags: X11
+  
+- name: Install xeyes
+  apt: name=xeyes state=latest
+  tags: X11
+  
+- name: Install xclock
+  apt: name=xclock state=latest
+  tags: X11
+
