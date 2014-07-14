@@ -5,12 +5,10 @@
   apt: name=x11-utils state=latest
   tags: X11
 
-- name: Install xterm
-  apt: name=xterm state=latest
-  tags: X11
-  
 - name: Install x11-apps
   apt: name=x11-apps state=latest
   tags: X11
   
-
+- name: Install xterm
+  apt: name=xterm state=latest
+  tags: X11
