@@ -4,4 +4,7 @@
 - name: Install netcdf development libraries
   apt: name=libnetcdf-dev state=latest
   tags: libraries
-  
+
+- name: Install hdf5 development libraries
+  apt: name=libhdf5-serial-dev state=latest
+  tags: libraries
