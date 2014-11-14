@@ -1,0 +1,7 @@
+---
+# update the apt server
+- hosts: servers
+  sudo: true
+  tasks:
+  - name: updates a server
+    apt: update_cache=yes

@@ -5,6 +5,7 @@
       
   roles:
     - base
+    - update-server
     - devEnv
     - x11Env
     - plasma/vmec
