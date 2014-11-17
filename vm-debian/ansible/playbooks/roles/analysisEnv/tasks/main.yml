@@ -5,6 +5,10 @@
   apt: name=python3 state=latest
   tags: analysis
 
+- name: Install Python 3 development libraries and headers  
+  apt: name=python3-dev state=latest
+  tags: matplotlib-build
+  
 - name: Install numpy
   apt: name=python3-numpy state=latest
   tags: analysis
@@ -13,3 +17,15 @@
   apt: name=python3-scipy state=latest
   tags: analysis
   
+- name: Install libfreetype6 (required by matplotlib)
+  apt: name=libfreetype6 state=latest
+  tags: matplotlib-build
+
+- name: Install libfreetype6 development libraries (required by matplotlib)
+  apt: name=libfreetype6-dev state=latest
+  tags: matplotlib-build
+
+- name: Install libpng development libraries (required by matplotlib)
+  apt: name=libpng12-dev state=latest
+  tags: matplotlib-build
+
