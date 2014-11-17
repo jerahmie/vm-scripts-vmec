@@ -8,6 +8,7 @@
     - update-server
     - devEnv
     - x11Env
+    - analysisEnv
     - plasma/vmec
     - plasma/devEnv
     
