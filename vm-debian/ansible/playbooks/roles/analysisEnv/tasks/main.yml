@@ -1,0 +1,15 @@
+---
+# This playbook will set up common analysis tools
+
+- name: Install python3
+  apt: name=python3 state=latest
+  tags: analysis
+
+- name: Install numpy
+  apt: name=python3-numpy state=latest
+  tags: analysis
+  
+- name: Install scipy
+  apt: name=python3-scipy state=latest
+  tags: analysis
+  
