@@ -1,31 +1,56 @@
 ---
 # This playbook will set up common analysis tools
 
-- name: Install python3
-  apt: name=python3 state=latest
-  tags: analysis
+- name: Install swig
+  apt: name=swig state=latest
+  tags: development
 
-- name: Install Python 3 development libraries and headers  
-  apt: name=python3-dev state=latest
-  tags: matplotlib-build
-  
-- name: Install numpy
-  apt: name=python3-numpy state=latest
-  tags: analysis
-  
-- name: Install scipy
-  apt: name=python3-scipy state=latest
+- name: Install python 2 development headers & libraries
+  apt: name=python-dev state=latest
+  tags: development
+
+- name: Install python 2 numpy
+  apt: name=python-numpy state=latest
   tags: analysis
   
-- name: Install libfreetype6 (required by matplotlib)
-  apt: name=libfreetype6 state=latest
-  tags: matplotlib-build
+- name: Install python 2 scipy
+  apt: name=python-scipy state=latest
+  tags: analysis
+  
+- name: Install Python 2 gtk2 (for matplotlib X11 display)
+  apt: name=python-gtk2 state=latest
+  tags: analysis
+  
+- name: Python 2 matplotlib
+  apt: name=python-matplotlib state=latest
+  tags: analysis
 
-- name: Install libfreetype6 development libraries (required by matplotlib)
-  apt: name=libfreetype6-dev state=latest
-  tags: matplotlib-build
-
-- name: Install libpng development libraries (required by matplotlib)
-  apt: name=libpng12-dev state=latest
-  tags: matplotlib-build
+# Python 3 environment: on hold for now
+# - name: Install python3
+#   apt: name=python3 state=latest
+#   tags: analysis
+# 
+# - name: Install Python 3 development libraries and headers  
+#   apt: name=python3-dev state=latest
+#   tags: matplotlib-build
+#   
+# - name: Install numpy
+#   apt: name=python3-numpy state=latest
+#   tags: analysis
+#   
+# - name: Install scipy
+#   apt: name=python3-scipy state=latest
+#   tags: analysis
+#   
+# - name: Install libfreetype6 (required by matplotlib)
+#   apt: name=libfreetype6 state=latest
+#   tags: matplotlib-build
+# 
+# - name: Install libfreetype6 development libraries (required by matplotlib)
+#   apt: name=libfreetype6-dev state=latest
+#   tags: matplotlib-build
+# 
+# - name: Install libpng development libraries (required by matplotlib)
+#   apt: name=libpng12-dev state=latest
+#   tags: matplotlib-build
 

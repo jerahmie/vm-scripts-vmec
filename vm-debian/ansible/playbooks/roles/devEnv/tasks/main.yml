@@ -12,6 +12,10 @@
 - name: Install make
   apt: name=make state=latest
   tags: utils
+
+- name: Install cmake
+  apt: name=cmake state=latest
+  tags: utils
   
 - name: Install gcc
   apt: name=gcc state=latest
