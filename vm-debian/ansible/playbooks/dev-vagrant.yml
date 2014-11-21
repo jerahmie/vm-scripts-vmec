@@ -11,6 +11,3 @@
     - analysisEnv
     - plasma/vmec
     - plasma/devEnv
-
-  tasks:
-    - include: tasks/shell_setup.yml
