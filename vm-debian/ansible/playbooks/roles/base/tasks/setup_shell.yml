@@ -1,5 +1,5 @@
 ---
 - name: copy .bash_aliases
-  copy: dest=~/.bash_aliases
+  copy: dest=/home/vagrant/.bash_aliases
         src=bash_aliases
         
