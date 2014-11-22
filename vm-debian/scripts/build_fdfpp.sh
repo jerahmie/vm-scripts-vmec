@@ -29,8 +29,10 @@ if [ -d "$BUILD_DIR" ]; then
 else
     $GIT clone $FDFPP_URL fdfpp
     cd $BUILD_DIR
-fi
 
 # Build and install
-$PYTHON setup.py build_ext --inplace  || { echo "FDFPP build failed."; exit 1; }
-# sudo $PYTHON setup.py install || { echo "FDFPP install failed."; exit 1; }
+cmake . || { echo "CMake FDFPP failed."; exit 1; }
+make || { echo "FDFPP build failed."; exit 1; }
+make install || { echo "FDFPP install failed."; exit 1; }
+$PYTHON setup.py build_ext  || { echo "FDFPP python extension build failed."; exit 1; }
+$PYTHON setup.py install || { echo "FDFPP python extension install failed."; exit 1; }
