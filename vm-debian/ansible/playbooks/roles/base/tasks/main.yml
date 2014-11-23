@@ -10,7 +10,7 @@
 
 - name: update apt settings
   copy: src=99timeout
-    dest:=/etc/apt/apt.conf.d/99timeout
+    dest=/etc/apt/apt.conf.d/99timeout
     owner=root
     group=root
     mode=0644
