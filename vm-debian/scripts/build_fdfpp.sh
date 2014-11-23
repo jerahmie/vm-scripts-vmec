@@ -37,4 +37,5 @@ make || { echo "FDFPP build failed."; exit 1; }
 make install || { echo "FDFPP install failed."; exit 1; }
 $PYTHON setup.py build_ext  || { echo "FDFPP python extension build failed."; exit 1; }
 $PYTHON setup.py install || { echo "FDFPP python extension install failed."; exit 1; }
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 $PYTHON -c "import fdfpp" || { echo "Failed to import fdfpp Python module."; exit 1; }
