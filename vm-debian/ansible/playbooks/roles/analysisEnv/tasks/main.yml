@@ -25,6 +25,10 @@
   apt: name=python-matplotlib state=latest
   tags: analysis
 
+- name: run build_fdfpp.sh script
+  command: build_fdfpp.sh
+  tags: analysis
+  
 # Python 3 environment: on hold for now
 # - name: Install python3
 #   apt: name=python3 state=latest
