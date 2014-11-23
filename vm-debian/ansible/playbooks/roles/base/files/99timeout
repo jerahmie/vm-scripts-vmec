@@ -1,0 +1,4 @@
+// Setup apt timeout and retry behavior
+Acquire::http::Timeout "10";
+Acquire::ftp::Timeout "10";
+Acquire::Retries "10";
