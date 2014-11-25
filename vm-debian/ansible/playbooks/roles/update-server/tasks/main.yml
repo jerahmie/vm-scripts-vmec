@@ -5,7 +5,7 @@
   apt: update_cache=yes
 
 # upgrade the system
-- name Upgrade apt
+- name: Upgrade apt
   sudo: true
   apt: upgrade=full
   
